@@ -38,8 +38,8 @@ class UpdateCommand extends Command
      */
     public function handle()
     {
-        (new Shell)->execute('cd /etc/jarvis && git pull');
-        
+        (new Shell)->execute('git -C /etc/jarvis/ pull');
+
         return 0;
     }
 }
