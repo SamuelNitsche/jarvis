@@ -28,8 +28,12 @@ class Site
     {
         $configFile = File::get("/etc/nginx/sites-enabled/{$siteName}");
         $configFile = Str::of($configFile)
-            ->replaceMatches('/# (include .*ssl-config;)/', function ($match) {
-                return $match[1];
+            ->replaceMatches('/# (include .*ssl-redirect;)/', function ($matches) {
+                return $matches[1];
+            })
+            ->replace('listen 80', '# listen 80')
+            ->replaceMatches('/# (include .*ssl-config;)/', function ($matches) {
+                return $matches[1];
             });
         File::put("/etc/nginx/sites-enabled/{$siteName}", $configFile);
 

@@ -20,7 +20,7 @@ class Nginx
 
     private static function createBaseConfig($siteName)
     {
-        $content = File::get(base_path('templates/nginx/site-config'));
+        $content = File::get(base_path('templates/nginx/base-config'));
 
         $content = Str::of($content)
             ->replace("{{ siteName }}", $siteName);
@@ -33,12 +33,20 @@ class Nginx
     private static function createSslConfig($siteName)
     {
         File::ensureDirectoryExists("/etc/nginx/jarvis/{$siteName}/before/", recursive: true);
+        File::ensureDirectoryExists("/etc/nginx/jarvis/{$siteName}/server/", recursive: true);
+
+        $content = File::get(base_path('templates/nginx/ssl-redirect'));
+
+        $content = Str::of($content)
+            ->replace("{{ siteName }}", $siteName);
+
+        File::put("/etc/nginx/jarvis/{$siteName}/before/ssl-redirect", $content);
 
         $content = File::get(base_path('templates/nginx/ssl-config'));
 
         $content = Str::of($content)
             ->replace("{{ siteName }}", $siteName);
 
-        File::put("/etc/nginx/jarvis/{$siteName}/before/ssl-config", $content);
+        File::put("/etc/nginx/jarvis/{$siteName}/server/ssl-config", $content);
     }
 }
