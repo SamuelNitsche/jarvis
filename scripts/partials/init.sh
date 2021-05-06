@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt update -y
+execSilent apt update -y

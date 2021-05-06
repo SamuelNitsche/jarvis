@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Install nginx"
-apt install nginx -y
+execSilent apt install nginx -y
 
 echo "Initial nginx configuration"
 rm /etc/nginx/nginx.conf
