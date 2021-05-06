@@ -10,7 +10,7 @@ cat << "EOF"
 /____/\__/\____/\____/_/
     By Samuel Nitsche
 
-    
+
 EOF
 
 echo "Initialization..."
@@ -24,6 +24,9 @@ bash /etc/stool/scripts/partials/apt-repos.sh
 
 echo "Setup webserver"
 bash /etc/stool/scripts/partials/nginx.sh
+
+echo "Setup php"
+bash /etc/stool/scripts/partials/php.sh
 
 echo "Setup firewall"
 bash /etc/stool/scripts/partials/ufw.sh
