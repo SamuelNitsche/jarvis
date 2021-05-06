@@ -9,6 +9,8 @@ cat << "EOF"
  (__  ) /_/ /_/ / /_/ / /
 /____/\__/\____/\____/_/
     By Samuel Nitsche
+
+    
 EOF
 
 echo "Initialization..."
