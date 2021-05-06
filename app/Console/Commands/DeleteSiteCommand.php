@@ -39,9 +39,11 @@ class DeleteSiteCommand extends Command
      */
     public function handle()
     {
-        dd(array_map(function ($item) {
-            return [$item => $item];
-        }, Site::all()));
+        $availableSites = collect(Site::all())->map(function ($site) {
+            return [$site => $site];
+        })->collapse();
+
+        dd($availableSites);
 
         $siteName = $this->menu('Select site')->open();
 //        $siteName = $this->ask('Please enter the domain name');
