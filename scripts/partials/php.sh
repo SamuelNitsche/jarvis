@@ -3,7 +3,8 @@
 source /etc/stool/scripts/helpers.sh
 
 echo "Install php"
-execSilent apt-get install -y --force-yes php8.0-fpm php8.0-cli php8.0-dev \
+execSilent apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages \
+  php8.0-fpm php8.0-cli php8.0-dev \
   php8.0-pgsql php8.0-sqlite3 php8.0-gd \
   php8.0-curl php8.0-memcached \
   php8.0-imap php8.0-mysql php8.0-mbstring \
