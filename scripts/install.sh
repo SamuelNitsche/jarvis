@@ -15,6 +15,8 @@ cat << "EOF"
 
 EOF
 
+MYSQL_ROOT_PASSWORD=$(passwordgen);
+
 echo "Initialization..."
 source /etc/jarvis/scripts/partials/init.sh
 
