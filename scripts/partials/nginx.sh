@@ -3,7 +3,7 @@
 source /etc/stool/scripts/helpers.sh
 
 echo "Install nginx"
-execSilent apt install nginx -y
+execSilent "apt install nginx -y"
 
 echo "Initial nginx configuration"
 rm /etc/nginx/nginx.conf

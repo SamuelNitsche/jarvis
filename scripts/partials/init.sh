@@ -2,4 +2,4 @@
 
 source /etc/stool/scripts/helpers.sh
 
-execSilent apt update -y
+execSilent "apt update -y"
