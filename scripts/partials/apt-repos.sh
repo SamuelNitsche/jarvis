@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source /etc/stool/scripts/helpers.sh
+
 echo "Adding apt repository for nginx mainline"
 cat << EOF > /etc/apt/sources.list.d/nginx.list
 deb [arch=amd64] http://nginx.org/packages/mainline/ubuntu/ focal nginx

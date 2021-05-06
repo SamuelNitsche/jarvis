@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source /etc/stool/scripts/helpers.sh
+
 echo "Installing ufw"
 execSilent apt install ufw -y
 
