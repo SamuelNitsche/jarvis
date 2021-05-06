@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() == 'production') {
+        if ($this->app->environment() === 'production') {
             $this->app->register(ProductionArtisanServiceProvider::class);
             $this->app->register(ProductionSailServiceProvider::class);
             $this->app->register(ProductionMigrationServiceProvider::class);
