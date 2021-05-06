@@ -20,6 +20,21 @@ class Site
     public static function secure($siteName, $dry)
     {
         Certbot::requestCertificateForDomain($siteName, $dry);
+
+        Site::enableSslConfig($siteName);
+    }
+
+    public static function enableSslConfig($siteName)
+    {
+        $configFile = File::get("/etc/nginx/sites-enabled/{$siteName}");
+        $configFile = Str::of($configFile)
+            ->replace(
+                '# include /etc/nginx/jarvis/{{ siteName }}/before/ssl-config;',
+                'include /etc/nginx/jarvis/{{ siteName }}/before/ssl-config;',
+            );
+        File::put("/etc/nginx/sites-enabled/{$siteName}", $configFile);
+
+        Nginx::reload();
     }
 
     public static function exists($siteName): bool

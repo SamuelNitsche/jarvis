@@ -1,4 +1,4 @@
-include /etc/nginx/jarvis/{{ siteName }}/before/*;
+# include /etc/nginx/jarvis/{{ siteName }}/before/ssl-config;
 
 server {
     root /home/jarvis/{{ siteName }}/public;

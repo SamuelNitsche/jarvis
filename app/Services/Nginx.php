@@ -18,4 +18,9 @@ class Nginx
 
         File::link("/etc/nginx/sites-available/{$siteName}", "/etc/nginx/sites-enabled/{$siteName}");
     }
+
+    public static function reload()
+    {
+        (new Shell)->execute('systemctl reload nginx');
+    }
 }

@@ -54,7 +54,8 @@ class AddSiteCommand extends Command
 
         $dryComment = $this->option('dry') ? '[dry-run]' : '';
         $this->info("Obtaining a certificate from Letsencrypt {$dryComment}");
-        Site::secure($siteName, dry: $this->option('dry'));
+        // Site::secure($siteName, dry: $this->option('dry'));
+        Site::enableSslConfig($siteName);
 
         $this->info("Site [{$siteName}] was created successfully");
 

@@ -1,0 +1,19 @@
+# Redirect every request to HTTPS...
+server {
+     listen 80;
+     listen [::]:80;
+     server_name .{{ siteName }};
+     return 301 https://$host$request_uri;
+}
+
+# Redirect SSL to primary domain SSL...
+server {
+     listen 443 ssl http2;
+     listen [::]:443 ssl http2;
+
+     ssl_certificate /etc/letsencrypt/live/{{ siteName }}/fullchain.pem;
+     ssl_certificate_key /etc/letsencrypt/live/{{ siteName }}/privkey.pem;
+
+     server_name {{ siteName }};
+     return 301 https://{{ siteName }}$request_uri;
+}
