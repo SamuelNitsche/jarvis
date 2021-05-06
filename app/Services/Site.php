@@ -29,9 +29,8 @@ class Site
         $configFile = File::get("/etc/nginx/sites-enabled/{$siteName}");
         $configFile = Str::of($configFile)
             ->replaceMatches('/# (include .*ssl-config;)/', function ($match) {
-                dd($match);
+                return $match[1];
             });
-        var_dump($configFile);
         File::put("/etc/nginx/sites-enabled/{$siteName}", $configFile);
 
         Nginx::reload();
