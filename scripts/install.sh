@@ -2,8 +2,11 @@
 
 source /etc/stool/scripts/helpers.sh
 
-# VARS
 echo "Initialization..."
+bash /etc/stool/scripts/partials/init.sh
 
-echo "Install unzip"
-execSilent sudo apt-get install unzip -y
+echo "Installing system tools"
+bash /etc/stool/scripts/partials/system-tools.sh
+
+echo "Add repos"
+bash /etc/stool/scripts/partials/apt-repos.sh
