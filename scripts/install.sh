@@ -1,33 +1,34 @@
 #!/bin/bash
 
-source /etc/stool/scripts/helpers.sh
+source /etc/jarvis/scripts/helpers.sh
 
 cat << "EOF"
-         __              __
-   _____/ /_____  ____  / /
-  / ___/ __/ __ \/ __ \/ /
- (__  ) /_/ /_/ / /_/ / /
-/____/\__/\____/\____/_/
+    _                  _              ___   ___   _
+   (_) __ _ _ ____   _(_)___  __   __/ _ \ / _ \ / |
+   | |/ _` | '__\ \ / / / __| \ \ / / | | | | | || |
+   | | (_| | |   \ V /| \__ \  \ V /| |_| | |_| || |
+  _/ |\__,_|_|    \_/ |_|___/   \_/  \___(_)___(_)_|
+ |__/
 
-    By Samuel Nitsche
+                By Samuel Nitsche
 
 
 EOF
 
 echo "Initialization..."
-bash /etc/stool/scripts/partials/init.sh
+bash /etc/jarvis/scripts/partials/init.sh
 
 echo "Installing system tools"
-bash /etc/stool/scripts/partials/system-tools.sh
+bash /etc/jarvis/scripts/partials/system-tools.sh
 
 echo "Add repos"
-bash /etc/stool/scripts/partials/apt-repos.sh
+bash /etc/jarvis/scripts/partials/apt-repos.sh
 
 echo "Setup webserver"
-bash /etc/stool/scripts/partials/nginx.sh
+bash /etc/jarvis/scripts/partials/nginx.sh
 
 echo "Setup php"
-bash /etc/stool/scripts/partials/php.sh
+bash /etc/jarvis/scripts/partials/php.sh
 
 echo "Setup firewall"
-bash /etc/stool/scripts/partials/ufw.sh
+bash /etc/jarvis/scripts/partials/ufw.sh

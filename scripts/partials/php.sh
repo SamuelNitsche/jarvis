@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /etc/stool/scripts/helpers.sh
+source /etc/jarvis/scripts/helpers.sh
 
 echo "Install php"
 execSilent apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages \
@@ -19,9 +19,9 @@ sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php/8.0/fpm/php.ini
 #sed -i "s/;date.timezone.*/date.timezone = UTC/" /etc/php/8.0/fpm/php.ini
 
 echo "Tweak php fpm pool configuration"
-#sed -i "s/^user = www-data/user = forge/" /etc/php/8.0/fpm/pool.d/www.conf
-#sed -i "s/^group = www-data/group = forge/" /etc/php/8.0/fpm/pool.d/www.conf
-#sed -i "s/;listen\.owner.*/listen.owner = forge/" /etc/php/8.0/fpm/pool.d/www.conf
-#sed -i "s/;listen\.group.*/listen.group = forge/" /etc/php/8.0/fpm/pool.d/www.conf
+sed -i "s/^user = www-data/user = jarvis/" /etc/php/8.0/fpm/pool.d/www.conf
+sed -i "s/^group = www-data/group = jarvis/" /etc/php/8.0/fpm/pool.d/www.conf
+sed -i "s/;listen\.owner.*/listen.owner = jarvis/" /etc/php/8.0/fpm/pool.d/www.conf
+sed -i "s/;listen\.group.*/listen.group = jarvis/" /etc/php/8.0/fpm/pool.d/www.conf
 sed -i "s/;listen\.mode.*/listen.mode = 0666/" /etc/php/8.0/fpm/pool.d/www.conf
 sed -i "s/;request_terminate_timeout.*/request_terminate_timeout = 60/" /etc/php/8.0/fpm/pool.d/www.conf

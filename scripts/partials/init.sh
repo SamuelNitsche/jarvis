@@ -1,5 +1,5 @@
 #!/bin/bash
 
-source /etc/stool/scripts/helpers.sh
+source /etc/jarvis/scripts/helpers.sh
 
 execSilent apt-get update -y
