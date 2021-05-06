@@ -11,7 +11,7 @@ class Certbot
         if ($dry) {
             (new Shell)->execute("certbot certonly --nginx -d {$siteName} --dry-run");
         } else {
-            (new Shell)->execute("certbot certonly --nginx -d {$siteName} -m {$emailAddress}");
+            (new Shell)->execute("certbot certonly --nginx -d {$siteName} -m {$emailAddress} --agree-tos");
         }
     }
 }
