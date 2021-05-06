@@ -3,7 +3,7 @@
 source /etc/stool/scripts/helpers.sh
 
 echo "Install zip"
-execSilent apt-get-get install zip -y
+execSilent apt-get install zip -y
 
 echo "Install unzip"
-execSilent apt-get-get install unzip -y
+execSilent apt-get install unzip -y
