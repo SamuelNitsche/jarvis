@@ -112,6 +112,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psy/psysh" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/beberlei/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-school/terminal" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-school/cli-menu" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nunomaduro/laravel-console-menu" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

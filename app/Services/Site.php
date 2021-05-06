@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use SplFileInfo;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
@@ -24,5 +25,14 @@ class Site
     public static function exists($siteName): bool
     {
         return File::exists("/etc/nginx/sites-enabled/{$siteName}");
+    }
+
+    public static function all(): array
+    {
+        return collect(File::allFiles('/etc/nginx/sites-enabled'))
+            ->map(function (SplFileInfo $fileInfo) {
+                return $fileInfo->getFilename();
+            })
+            ->toArray();
     }
 }
