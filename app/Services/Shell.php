@@ -10,7 +10,7 @@ class Shell
     {
         $process = new Process(explode(' ', $command));
 
-        $process->run();
+        $process->mustRun();
 
         return $process->getOutput();
     }

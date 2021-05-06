@@ -49,8 +49,11 @@ class AddSiteCommand extends Command
             return 1;
         }
 
+        $this->info("Create the site [{$siteName}]");
         Site::create($siteName);
 
+        $dryComment = $this->option('dry') ? '[dry-run]' : '';
+        $this->info("Obtaining a certificate from Letsencrypt {$dryComment}");
         Site::secure($siteName, dry: $this->option('dry'));
 
         $this->info("Site [{$siteName}] was created successfully");
