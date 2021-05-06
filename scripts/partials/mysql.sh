@@ -10,6 +10,7 @@ execSilent apt-get install mysql-server -y
 
 echo "Create jarvis user"
 mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "CREATE USER 'jarvis'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
-mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL ON *.* TO 'jarvis'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD' WITH GRANT OPTION;"
-mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL ON *.* TO 'jarvis'@'%' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD' WITH GRANT OPTION;"
+mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "CREATE USER 'jarvis'@'%' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
+mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL ON *.* TO 'jarvis'@'localhost' WITH GRANT OPTION;"
+mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL ON *.* TO 'jarvis'@'%' WITH GRANT OPTION;"
 mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "FLUSH PRIVILEGES;"
