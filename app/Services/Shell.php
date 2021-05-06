@@ -12,6 +12,7 @@ class Shell
 
         $process->mustRun();
 
+        var_dump($process->getOutput());
         return $process->getOutput();
     }
 }
