@@ -31,7 +31,8 @@ class Site
             ->replace(
                 '# include /etc/nginx/jarvis/{{ siteName }}/before/ssl-config;',
                 'include /etc/nginx/jarvis/{{ siteName }}/before/ssl-config;',
-            );
+            )
+            ->replace('{{ siteName }}', $siteName);
         File::put("/etc/nginx/sites-enabled/{$siteName}", $configFile);
 
         Nginx::reload();
