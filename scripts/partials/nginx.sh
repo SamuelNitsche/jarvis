@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source /etc/stool/scripts/helpers.sh
-
 echo "Install nginx"
 execSilent "apt install nginx -y"
 
