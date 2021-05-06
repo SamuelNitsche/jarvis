@@ -35,3 +35,5 @@ bash /etc/jarvis/scripts/partials/php.sh
 
 echo "Setup firewall"
 bash /etc/jarvis/scripts/partials/ufw.sh
+
+echo "Setup finished successfully. The system is now ready."
