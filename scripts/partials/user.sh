@@ -18,7 +18,6 @@ ssh-keyscan -H gitlab.com >> /home/jarvis/.ssh/known_hosts
 echo "Setup directory permissions"
 chown -R jarvis:jarvis /home/jarvis
 chmod -R 755 /home/jarvis
-chmod 700 /home/jarvis/.ssh/id_rsa
 
 echo "Allow php-fpm restart"
 echo "jarvis ALL=NOPASSWD: /usr/sbin/service php8.0-fpm reload" >> /etc/sudoers.d/php-fpm
