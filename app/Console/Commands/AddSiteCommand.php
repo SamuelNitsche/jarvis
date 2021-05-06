@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\Site;
+use App\Services\Nginx;
 use Illuminate\Console\Command;
 
 class AddSiteCommand extends Command
@@ -55,9 +56,13 @@ class AddSiteCommand extends Command
                 $this->info("Obtaining a certificate from Letsencrypt {$dryComment}");
                 Site::secure($siteName, dry: $this->option('dry'));
             } else {
+                $this->info('Certificate available, enabling config');
                 Site::enableSslConfig($siteName);
             }
         }
+
+        $this->info('Reloading Nginx');
+        Nginx::reload();
 
         $this->info("Site [{$siteName}] was created successfully");
 
