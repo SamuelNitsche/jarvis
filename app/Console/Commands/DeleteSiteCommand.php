@@ -40,7 +40,7 @@ class DeleteSiteCommand extends Command
     public function handle()
     {
         dd(array_map(function ($item) {
-            dd($item);
+            return [$item => $item];
         }, Site::all()));
 
         $siteName = $this->menu('Select site')->open();
