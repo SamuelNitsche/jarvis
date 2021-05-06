@@ -42,7 +42,10 @@ class AddSiteCommand extends Command
     {
         $siteName = $this->ask('Please enter the domain name');
 
-        $this->info("You entered {$siteName}");
+        if (File::exists("/etc/nginx/sites-enabled/{$siteName}")) {
+            $this->error("Site [{$siteName}] already exists!");
+            return 1;
+        }
 
         $content = File::get(base_path('templates/nginx/config'));
 
@@ -56,6 +59,8 @@ class AddSiteCommand extends Command
         (new Shell)->execute("mkdir -p /home/jarvis/{$siteName}/public");
 
         File::copy(base_path('templates/nginx/index.php'), "/home/jarvis/{$siteName}/public/index.php");
+
+        $this->info("Site [{$siteName}] was created successfully");
 
         return 0;
     }
