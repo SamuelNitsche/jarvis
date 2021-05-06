@@ -3,11 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\Site;
-use App\Services\Shell;
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
-use App\Checks\SiteAlreadyExists;
-use Illuminate\Support\Facades\File;
 
 class AddSiteCommand extends Command
 {
@@ -16,7 +12,7 @@ class AddSiteCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'site:add {--dry}';
+    protected $signature = 'site:add {--insecure} {--dry}';
 
     /**
      * The console command description.
@@ -52,10 +48,16 @@ class AddSiteCommand extends Command
         $this->info("Create the site [{$siteName}]");
         Site::create($siteName);
 
-        $dryComment = $this->option('dry') ? '[dry-run]' : '';
-        $this->info("Obtaining a certificate from Letsencrypt {$dryComment}");
-        // Site::secure($siteName, dry: $this->option('dry'));
-        Site::enableSslConfig($siteName);
+        if (!$this->option('insecure')) {
+            $this->info('Checking if ssl certificate is already available');
+            if (!Site::sslCertificateExists($siteName)) {
+                $dryComment = $this->option('dry') ? '[dry-run]' : '';
+                $this->info("Obtaining a certificate from Letsencrypt {$dryComment}");
+                Site::secure($siteName, dry: $this->option('dry'));
+            } else {
+                Site::enableSslConfig($siteName);
+            }
+        }
 
         $this->info("Site [{$siteName}] was created successfully");
 

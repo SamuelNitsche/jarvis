@@ -21,7 +21,7 @@ class Site
     {
         Certbot::requestCertificateForDomain($siteName, $dry);
 
-        Site::enableSslConfig($siteName);
+        self::enableSslConfig($siteName);
     }
 
     public static function enableSslConfig($siteName)
@@ -55,5 +55,10 @@ class Site
                 return in_array($siteName, ['catch-all', 'localhost']);
             })
             ->toArray();
+    }
+
+    public static function sslCertificateExists(mixed $siteName)
+    {
+        return File::exists("/etc/letsencrypt/live/{$siteName}/fullchain.pem");
     }
 }
