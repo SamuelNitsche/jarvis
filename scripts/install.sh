@@ -24,6 +24,9 @@ bash /etc/jarvis/scripts/partials/system-tools.sh
 echo "Add repos"
 bash /etc/jarvis/scripts/partials/apt-repos.sh
 
+echo "Setup user"
+bash /etc/jarvis/scripts/partials/user.sh
+
 echo "Setup webserver"
 bash /etc/jarvis/scripts/partials/nginx.sh
 
