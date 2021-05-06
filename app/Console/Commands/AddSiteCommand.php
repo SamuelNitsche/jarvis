@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Services\Site;
 use App\Services\Shell;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
+use App\Checks\SiteAlreadyExists;
 use Illuminate\Support\Facades\File;
 
 class AddSiteCommand extends Command
@@ -14,7 +16,7 @@ class AddSiteCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'site:add';
+    protected $signature = 'site:add {--dry}';
 
     /**
      * The console command description.
@@ -42,23 +44,14 @@ class AddSiteCommand extends Command
     {
         $siteName = $this->ask('Please enter the domain name');
 
-        if (File::exists("/etc/nginx/sites-enabled/{$siteName}")) {
+        if (Site::exists($siteName)) {
             $this->error("Site [{$siteName}] already exists!");
             return 1;
         }
 
-        $content = File::get(base_path('templates/nginx/config'));
+        Site::create($siteName);
 
-        $content = Str::of($content)
-            ->replace("{{ siteName }}", $siteName);
-
-        File::put("/etc/nginx/sites-available/{$siteName}", $content);
-
-        File::link("/etc/nginx/sites-available/{$siteName}", "/etc/nginx/sites-enabled/{$siteName}");
-
-        (new Shell)->execute("mkdir -p /home/jarvis/{$siteName}/public");
-
-        File::copy(base_path('templates/nginx/index.php'), "/home/jarvis/{$siteName}/public/index.php");
+        Site::secure($siteName, dry: $this->option('dry'));
 
         $this->info("Site [{$siteName}] was created successfully");
 

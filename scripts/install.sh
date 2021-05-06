@@ -30,6 +30,9 @@ bash /etc/jarvis/scripts/partials/user.sh
 echo "Setup webserver"
 bash /etc/jarvis/scripts/partials/nginx.sh
 
+echo "Setup certbot"
+bash /etc/jarvis/scripts/partials/certbot.sh
+
 echo "Setup php"
 bash /etc/jarvis/scripts/partials/php.sh
 
