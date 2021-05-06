@@ -32,6 +32,8 @@ class Nginx
 
     private static function createSslConfig($siteName)
     {
+        File::makeDirectory("/etc/nginx/jarvis/{$siteName}/before/", recursive: true);
+
         $content = File::get(base_path('templates/nginx/ssl-config'));
 
         $content = Str::of($content)
