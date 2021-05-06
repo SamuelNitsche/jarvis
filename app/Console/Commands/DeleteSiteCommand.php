@@ -39,7 +39,11 @@ class DeleteSiteCommand extends Command
      */
     public function handle()
     {
-        $siteName = $this->menu('Select site', Site::all())->open();
+        dd(array_map(function ($item) {
+            dd($item);
+        }, Site::all()));
+
+        $siteName = $this->menu('Select site')->open();
 //        $siteName = $this->ask('Please enter the domain name');
 
         if (! File::exists("/etc/nginx/sites-enabled/{$siteName}")) {
