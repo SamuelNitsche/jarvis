@@ -41,14 +41,14 @@ class DeleteSiteCommand extends Command
     {
         $availableSites = collect(Site::all())->map(function ($site) {
             return [$site => $site];
-        })->collapse();
+        })
+            ->collapse()
+            ->toArray();
 
-        dd($availableSites);
-
-        $siteName = $this->menu('Select site')->open();
+        $siteName = $this->menu('Select site', $availableSites)->open();
 //        $siteName = $this->ask('Please enter the domain name');
 
-        if (! File::exists("/etc/nginx/sites-enabled/{$siteName}")) {
+        if (!File::exists("/etc/nginx/sites-enabled/{$siteName}")) {
             $this->error("Site [{$siteName}] does not exist!");
             return 1;
         }
