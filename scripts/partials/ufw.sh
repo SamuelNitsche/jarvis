@@ -8,3 +8,6 @@ execSilent apt install ufw -y
 echo "Setting initial firewall rules"
 execSilent ufw allow "Nginx Full"
 execSilent ufw allow "SSH"
+
+echo "Enable ufw"
+execSilent ufw enable
