@@ -1,3 +1,3 @@
 function execSilent() {
-  $0 &> /dev/null
+  $0 > /dev/null
 }
