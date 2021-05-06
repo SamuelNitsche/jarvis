@@ -42,6 +42,8 @@ class AddSiteCommand extends Command
     {
         $siteName = $this->ask('Please enter the domain name');
 
+        $this->info("You entered {$siteName}");
+
         $content = File::get(base_path('templates/nginx/config'));
 
         $content = Str::of($content)
@@ -49,7 +51,7 @@ class AddSiteCommand extends Command
 
         File::put("/etc/nginx/sites-available/{$siteName}", $content);
 
-        File::link("/etc/nginx/sites-enabled/{$siteName}", "/etc/nginx/sites-available/{$siteName}");
+        File::link("/etc/nginx/sites-available/{$siteName}", "/etc/nginx/sites-enabled/{$siteName}");
 
         (new Shell)->execute("mkdir -p /home/jarvis/{$siteName}/public");
 
