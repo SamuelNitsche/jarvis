@@ -48,3 +48,4 @@ echo "Setup firewall"
 source /etc/jarvis/scripts/partials/ufw.sh
 
 echo "Setup finished successfully. The system is now ready."
+echo "The mysql root password is "$MYSQL_ROOT_PASSWORD
