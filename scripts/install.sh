@@ -2,6 +2,8 @@
 
 source /etc/jarvis/scripts/helpers.sh
 
+clear
+
 cat << "EOF"
     _                  _              ___   ___   _
    (_) __ _ _ ____   _(_)___  __   __/ _ \ / _ \ / |
