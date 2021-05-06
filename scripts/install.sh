@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./helpers.sh
+source /etc/stool/scripts/helpers.sh
 
 # VARS
 echo "Initialization..."
