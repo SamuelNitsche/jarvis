@@ -40,6 +40,8 @@ class UpdateCommand extends Command
     {
         (new Shell)->execute('git -C /etc/jarvis/ pull');
 
+        $this->info('Jarvis was updated successfully');
+
         return 0;
     }
 }
