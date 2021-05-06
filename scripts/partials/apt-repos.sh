@@ -11,4 +11,4 @@ EOF
 echo "Adding apt repository for php"
 execSilent add-apt-repository ppa:ondrej/php -y
 
-apt update -y
+execSilent apt update -y
