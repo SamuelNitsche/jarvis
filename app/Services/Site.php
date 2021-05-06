@@ -33,7 +33,7 @@ class Site
             ->map(function (SplFileInfo $fileInfo) {
                 return $fileInfo->getFilename();
             })
-            ->filter(function ($siteName) {
+            ->reject(function ($siteName) {
                 return in_array($siteName, ['catch-all', 'localhost']);
             })
             ->toArray();
