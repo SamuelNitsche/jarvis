@@ -3,7 +3,7 @@
 source /etc/stool/scripts/helpers.sh
 
 echo "Install nginx"
-execSilent apt install nginx -y
+execSilent apt-get install nginx -y
 
 echo "Initial nginx configuration"
 sed -i "s/worker_processes.*/worker_processes auto;/" /etc/nginx/nginx.conf
