@@ -16,30 +16,33 @@ cat << "EOF"
 EOF
 
 echo "Initialization..."
-bash /etc/jarvis/scripts/partials/init.sh
+source /etc/jarvis/scripts/partials/init.sh
 
 echo "Installing system tools"
-bash /etc/jarvis/scripts/partials/system-tools.sh
+source /etc/jarvis/scripts/partials/system-tools.sh
 
 echo "Add repos"
-bash /etc/jarvis/scripts/partials/apt-repos.sh
+source /etc/jarvis/scripts/partials/apt-repos.sh
 
 echo "Setup user"
-bash /etc/jarvis/scripts/partials/user.sh
+source /etc/jarvis/scripts/partials/user.sh
 
 echo "Setup webserver"
-bash /etc/jarvis/scripts/partials/nginx.sh
+source /etc/jarvis/scripts/partials/nginx.sh
+
+echo "Setup database server"
+source /etc/jarvis/scripts/partials/mysql.sh
 
 echo "Setup certbot"
-bash /etc/jarvis/scripts/partials/certbot.sh
+source /etc/jarvis/scripts/partials/certbot.sh
 
 echo "Setup php"
-bash /etc/jarvis/scripts/partials/php.sh
+source /etc/jarvis/scripts/partials/php.sh
 
 echo "Setup composer"
-bash /etc/jarvis/scripts/partials/composer.sh
+source /etc/jarvis/scripts/partials/composer.sh
 
 echo "Setup firewall"
-bash /etc/jarvis/scripts/partials/ufw.sh
+source /etc/jarvis/scripts/partials/ufw.sh
 
 echo "Setup finished successfully. The system is now ready."
