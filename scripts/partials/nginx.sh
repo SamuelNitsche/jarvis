@@ -34,5 +34,5 @@ server {
   }
 }
 EOF
-execVerySilent /etc/nginx/sites-enabled/localhost
+execVerySilent rm /etc/nginx/sites-enabled/localhost
 execSilent ln -s /etc/nginx/sites-available/localhost /etc/nginx/sites-enabled/localhost
