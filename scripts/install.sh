@@ -33,6 +33,9 @@ bash /etc/jarvis/scripts/partials/nginx.sh
 echo "Setup php"
 bash /etc/jarvis/scripts/partials/php.sh
 
+echo "Setup composer"
+bash /etc/jarvis/scripts/partials/composer.sh
+
 echo "Setup firewall"
 bash /etc/jarvis/scripts/partials/ufw.sh
 
