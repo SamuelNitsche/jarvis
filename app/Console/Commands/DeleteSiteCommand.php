@@ -59,6 +59,8 @@ class DeleteSiteCommand extends Command
             "/etc/nginx/sites-available/{$siteName}",
         ]);
 
+        $this->info("Site [{$siteName}] was deleted successfully");
+
         return 0;
     }
 }

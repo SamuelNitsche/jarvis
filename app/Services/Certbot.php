@@ -6,8 +6,10 @@ class Certbot
 {
     public static function requestCertificateForDomain($siteName, $dry)
     {
-        $dry = $dry ? '--dry-run' : '';
-
-        (new Shell)->execute("certbot certonly --nginx -d {$siteName} {$dry}");
+        if ($dry) {
+            (new Shell)->execute("certbot certonly --nginx -d {$siteName} --dry-run");
+        } else {
+            (new Shell)->execute("certbot certonly --nginx -d {$siteName}");
+        }
     }
 }
