@@ -28,10 +28,9 @@ class Site
     {
         $configFile = File::get("/etc/nginx/sites-enabled/{$siteName}");
         $configFile = Str::of($configFile)
-            ->replace(
-                '# include /etc/nginx/jarvis/{{ siteName }}/before/ssl-config;',
-                'include /etc/nginx/jarvis/{{ siteName }}/before/ssl-config;',
-            );
+            ->replaceMatches('/# (include .*ssl-config;)/', function ($match) {
+                dd($match);
+            });
         var_dump($configFile);
         File::put("/etc/nginx/sites-enabled/{$siteName}", $configFile);
 
