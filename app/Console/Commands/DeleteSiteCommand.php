@@ -54,6 +54,7 @@ class DeleteSiteCommand extends Command
         }
 
         File::deleteDirectory("/home/jarvis/{$siteName}");
+        File::deleteDirectory("/etc/nginx/jarvis/{$siteName}");
         File::delete([
             "/etc/nginx/sites-enabled/{$siteName}",
             "/etc/nginx/sites-available/{$siteName}",
